@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Previous head content remains exactly the same -->
+
+<body class="bg-[#F0F0F0]">
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="bg-[#FFD700] p-4 neubrutalism mb-0 grainy-gradient">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-2xl font-bold">CampusXchange</h1>
+                <div class="space-x-4 flex items-center">
+                    <!-- Search Bar moved to navigation -->
+                    <div class="relative w-96">
+                        <input type="text" v-model="filters.search" placeholder="Search..." class="w-full neubrutalism px-4 py-2 rounded-full">
+                        <i class="bi bi-search absolute right-4 top-3"></i>
+                    </div>
+                    
+                    <!-- Previous nav content remains the same -->
+                    <div v-if="isLoggedIn" class="flex items-center space-x-4">
+                        <!-- User Dropdown -->
+                        <div class="dropdown">
+                            <button class="bg-white px-4 py-2 neubrutalism rounded-full"><i class="bi bi-person-circle"></i></button>
+                            <div class="dropdown-content">
+                                <a href="#">My Ads</a>
+                                <a href="#">Profile Information</a>
+                                <a href="#">Wishlist</a>
+                                <a href="#" @click.prevent="showChat = true">Chat</a>
+                            </div>
+                        </div>
+                        <button class="bg-white px-4 py-2 neubrutalism rounded-full"><i class="bi bi-bell"></i></button>
+                        <button class="bg-[#4ECDC4] px-4 py-2 neubrutalism rounded-full">
+                            <i class="bi bi-plus-circle"></i> Post Ad
+                        </button>
+                    </div>
+                    <template v-else>
+                        <button class="bg-[#FF6B6B] px-4 py-2 neubrutalism rounded-full" @click="showLoginModal = true">Login</button>
+                        <button class="bg-[#4ECDC4] px-4 py-2 neubrutalism rounded-full" @click="showCreateListing = true">Create Listing</button>
+                    </template>
+                </div>
+            </div>
+        </nav>
+
+        <!-- New Hero Section with App Description -->
+        <section class="grainy-gradient py-16 neubrutalism mx-8 mt-8">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-6">Welcome to CampusXchange</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">
+                    Your one-stop marketplace for campus commerce. Buy, sell, and exchange items and services 
+                    with your fellow students. Earn cafeteria credits through donations!
+                </p>
+                <button @click="showAbout = true" class="bg-[#4ECDC4] px-6 py-3 neubrutalism rounded-full text-lg">
+                    Learn More
+                </button>
+            </div>
+        </section>
+
+        <!-- About Modal -->
+        <div v-if="showAbout" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div class="bg-white p-8 neubrutalism max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-bold">About CampusXchange</h2>
+                    <button @click="showAbout = false" class="text-2xl">&times;</button>
+                </div>
+                <div class="space-y-6">
+                    <section>
+                        <h3 class="text-xl font-bold mb-3">Our Mission</h3>
+                        <p>CampusXchange aims to create a sustainable and collaborative marketplace within the campus community, promoting resource sharing and environmental consciousness.</p>
+                    </section>
+                    <section>
+                        <h3 class="text-xl font-bold mb-3">Key Features</h3>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Buy and sell used items</li>
+                            <li>Offer and find student services</li>
+                            <li>Earn cafeteria credits through donations</li>
+                            <li>Secure messaging system</li>
+                            <li>Admin-verified listings</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3 class="text-xl font-bold mb-3">How It Works</h3>
+                        <p>Simply create an account, browse listings, or post your own items and services. Our platform ensures safe transactions and community-focused exchange.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- Previous content remains exactly the same -->
+        
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    // Previous data remains the same
+                    showAbout: false, // Add this new property
+                    // ... rest of the previous data
+                }
+            },
+            // Previous methods and computed properties remain exactly the same
+        }).mount('#app')
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
